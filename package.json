@@ -16,7 +16,6 @@
     "@mui/material": "^5.15.5",
     "@mui/material-nextjs": "^5.15.5",
     "@reduxjs/toolkit": "^2.0.1",
-    "lucide-react": "^0.311.0",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",

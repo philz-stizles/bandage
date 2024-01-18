@@ -1,0 +1,21 @@
+.header-top {
+  color: #fff;
+  background-color: rgb(36, 133, 109);
+  padding: 0.8rem 0;
+}
+
+.header-bottom {
+  padding: 1rem 0;
+}
+
+.nav {
+  flex-grow: 1;
+}
+
+.header-actions {
+}
+
+.header-actions .icon {
+  display: inline-flex;
+  align-items: center;
+}

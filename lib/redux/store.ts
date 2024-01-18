@@ -16,10 +16,10 @@ const localStorageMiddleware = (store: any) => (next: any) => (action: any) => {
   return result;
 };
 
-const preloadedState = {
-  cart: loadCartFromStore(),
-  wishList: loadWishListFromStore(),
-};
+// const preloadedState = {
+//   cart: loadCartFromStore(),
+//   wishList: loadWishListFromStore(),
+// };
 
 export const makeStore = () => {
   return configureStore({
