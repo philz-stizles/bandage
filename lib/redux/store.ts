@@ -29,7 +29,10 @@ export const makeStore = () => {
       wishList: wishListReducer,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(localStorageMiddleware),
+      getDefaultMiddleware().concat(
+        localStorageMiddleware,
+        productApi.middleware
+      ),
     // preloadedState
   });
 };

@@ -8,12 +8,18 @@ type WishList = Product[];
 const initialState: WishList = [];
 
 export const saveWishListToStore = (cart: WishList) => {
-  localStorage.setItem(WISH_LIST_STORE, JSON.stringify(cart));
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem(WISH_LIST_STORE, JSON.stringify(cart));
+  }
 };
 
 export const loadWishListFromStore = () => {
-  const store = localStorage.getItem(WISH_LIST_STORE);
-  return !!store ? (JSON.parse(store) as WishList) : initialState;
+  if (typeof localStorage !== 'undefined') {
+    const store = localStorage.getItem(WISH_LIST_STORE);
+    return !!store ? (JSON.parse(store) as WishList) : initialState;
+  } else {
+    return initialState;
+  }
 };
 
 const wishListSlice = createSlice({
@@ -34,7 +40,9 @@ const wishListSlice = createSlice({
         state = state.filter((item) => item.id !== id);
       }
     },
-    clearWishList: (state, _) => {},
+    clearWishList: (state, _) => {
+      state.length = 0;
+    },
   },
 });
 

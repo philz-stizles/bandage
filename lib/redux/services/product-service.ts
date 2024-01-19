@@ -1,15 +1,21 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { PagedProducts } from '@/models/product';
+import { PagedProducts, Product } from '@/models/product';
 import config from '@/config';
 
 export const productApi = createApi({
   reducerPath: 'productApi',
   baseQuery: fetchBaseQuery({ baseUrl: config.baseUrl }),
   endpoints: (builder) => ({
-    getProduct: builder.query<PagedProducts, string>({
-      query: () => 'products',
+    getProducts: builder.query<PagedProducts, { limit: number; skip: number }>({
+      query: (options) => {
+        const { limit, skip } = options;
+        return `/products?limit=${limit}&skip=${skip}`;
+      },
+    }),
+    getProductById: builder.query<Product, number>({
+      query: (id) => `/products/${id}`,
     }),
   }),
 });
 
-export const { useGetProductQuery } = productApi;
+export const { useGetProductsQuery, useGetProductByIdQuery } = productApi;

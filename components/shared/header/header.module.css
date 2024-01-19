@@ -7,15 +7,3 @@
 .header-bottom {
   padding: 1rem 0;
 }
-
-.nav {
-  flex-grow: 1;
-}
-
-.header-actions {
-}
-
-.header-actions .icon {
-  display: inline-flex;
-  align-items: center;
-}

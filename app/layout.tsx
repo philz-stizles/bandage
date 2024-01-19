@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import CssBaseline from '@mui/material/CssBaseline';
 
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import './globals.css';
 import { Footer, Header } from '@/components/shared';
 import { Providers } from '@/lib/providers';
+import { Stack } from '@mui/material';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,12 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <Providers>
-      <CssBaseline />
       <html lang="en">
         <body className={inter.className}>
           <AppRouterCacheProvider>
             <Header />
-            <main>{children}</main>
+            <Stack component="main" flex={1}>{children}</Stack>
             <Footer />
           </AppRouterCacheProvider>
         </body>

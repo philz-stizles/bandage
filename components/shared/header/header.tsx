@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Box from '@mui/material/Box';
 import PhoneCallbackOutlined from '@mui/icons-material/PhoneCallbackOutlined';
 import Instagram from '@mui/icons-material/Instagram';
 import YouTube from '@mui/icons-material/YouTube';
@@ -115,7 +116,7 @@ const HeaderBottom = () => {
 
 const Nav = () => {
   return (
-    <nav className={styles.nav}>
+    <Box component="nav" sx={{ flexGrow: 1 }}>
       <Stack component="ul" direction="row" alignItems="center" spacing={2.4}>
         <li>
           <Link href="/">Home</Link>
@@ -133,7 +134,7 @@ const Nav = () => {
           <Link href="/blog">Contact</Link>
         </li>
       </Stack>
-    </nav>
+    </Box>
   );
 };
 

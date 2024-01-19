@@ -1,3 +1,5 @@
+'use client';
+
 import { useAppSelector } from '@/lib/redux/hooks';
 import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
 import Typography from '@mui/material/Typography';

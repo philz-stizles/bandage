@@ -5,12 +5,18 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 const CART_STORE = 'cart-store';
 
 export const saveCartToStore = (cart: Cart) => {
-  localStorage.setItem(CART_STORE, JSON.stringify(cart));
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem(CART_STORE, JSON.stringify(cart));
+  }
 };
 
 export const loadCartFromStore = () => {
-  const cartStore = localStorage.getItem(CART_STORE);
-  return !!cartStore ? (JSON.parse(cartStore) as Cart) : initialState;
+  if (typeof localStorage !== 'undefined') {
+    const cartStore = localStorage.getItem(CART_STORE);
+    return !!cartStore ? (JSON.parse(cartStore) as Cart) : initialState;
+  } else {
+    return initialState;
+  }
 };
 
 const initialState: Cart = {
