@@ -44,7 +44,6 @@ const BestSellers = () => {
           fontWeight={600}
           textTransform="uppercase"
           py={3.2}
-          borderBottom="1px solid gray"
         >
           BestSeller Products
         </Typography>

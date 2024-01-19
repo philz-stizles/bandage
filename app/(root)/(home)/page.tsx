@@ -9,11 +9,12 @@ import {
 } from './components';
 import POSTS from '@/data/posts';
 import SERVICES from '@/data/services';
+import CATEGORIES from '@/data/categories';
 
 export default function Home() {
   return (
     <Fragment>
-      <Categories />
+      <Categories categories={CATEGORIES} />
       <BestSellers />
       <Services services={SERVICES} />
       <FeaturedPosts posts={POSTS} />

@@ -23,7 +23,7 @@ const Services = ({ services }: Props) => {
           subTitle="Featured Products"
           description="Problems trying to resolve the conflict between"
         />
-        <Grid container spacing={2} py={4}>
+        <Grid container spacing={2} py={6}>
           {services.map((service) => (
             <Grid key={service.id} item xs={4}>
               <ServiceCard service={service} />

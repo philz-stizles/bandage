@@ -33,7 +33,7 @@ const FeaturedPosts = ({ posts }: Props) => {
             Featured Posts
           </Typography>
         </Stack>
-        <Grid container spacing={1.8} py={4}>
+        <Grid container spacing={1.8} py={6}>
           {posts.map((post) => (
             <Grid key={post.id} item xs={4}>
               <PostCard post={post} />

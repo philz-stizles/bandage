@@ -1,8 +1,9 @@
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
+'use client';
+
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { Service } from '@/models/service';
+import Image from 'next/image';
 
 type Props = {
   service: Service;
@@ -10,23 +11,25 @@ type Props = {
 
 const ServiceCard = ({ service }: Props) => {
   return (
-    <Card sx={{ border: 'none', borderRadius: 0, boxShadow: 'none' }}>
-      <CardContent
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 2
-        }}
+    <Stack
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      spacing={2}
+    >
+      <Image height={100} width={100} src={service.icon} alt={service.title} />
+      <Typography variant="h5" fontWeight={700} noWrap>
+        {service.title}
+      </Typography>
+      <Typography
+        variant="body2"
+        color="text.secondary"
+        textAlign="center"
+        maxWidth="72%"
       >
-        <Typography variant="h5" fontWeight={700} noWrap>
-          {service.title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary" textAlign="center">
-          {service.description}
-        </Typography>
-      </CardContent>
-    </Card>
+        {service.description}
+      </Typography>
+    </Stack>
   );
 };
 

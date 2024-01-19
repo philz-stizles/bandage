@@ -6,20 +6,20 @@ const SERVICES: Service[] = [
     id: 1,
     title: 'Easy Wins',
     description: 'Get your best looking smile now!',
-    icon: TrendingUpOutlinedIcon,
+    icon: '/icons/icon cool-icon-1153.svg',
   },
   {
     id: 2,
     title: 'Concrete',
     description:
       'Defalcate is most focused in helping you discover your most beautiful smile.',
-    icon: '',
+    icon: '/icons/icon cool-icon-153.svg',
   },
   {
     id: 3,
     title: 'Hack Growth',
     description: 'Overcame any hurdle or any other problem.',
-    icon: '',
+    icon: '/icons/icon cool-icon-125.svg',
   },
 ];
 
