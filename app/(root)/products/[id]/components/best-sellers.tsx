@@ -34,16 +34,17 @@ const BestSellers = () => {
   return (
     <Box
       component="section"
+      bgcolor="#fafafa"
       sx={{
-        py: 10,
+        py: 7.2,
       }}
     >
       <Container maxWidth="lg">
         <Typography
-          variant="h6"
+          variant="h5"
           fontWeight={600}
           textTransform="uppercase"
-          py={3.2}
+          pb={3.2}
         >
           BestSeller Products
         </Typography>

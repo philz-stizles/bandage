@@ -1,32 +1,48 @@
 'use client';
 
-import { useGetProductsQuery } from '@/lib/redux/services/product-service';
+import { useEffect } from 'react';
+import {
+  productApi,
+  useGetProductsQuery,
+} from '@/lib/redux/services/product-service';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 import { AppButton, ProductCard, SectionHeader } from '@/components/ui';
-import { Stack } from '@mui/material';
+import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
+import { setPage, setProducts } from '@/lib/redux/slices/product-slice';
 
 const BestSellers = () => {
+  const dispatch = useAppDispatch();
+  const { products, page, limit } = useAppSelector((state) => state.products);
   const { data, isLoading, isSuccess, isError, error } = useGetProductsQuery({
-    limit: 10,
-    skip: 0,
+    limit,
+    skip: (page - 1) * limit,
   });
 
-  console.log(data);
+  useEffect(() => {
+    if (data) {
+      dispatch(setProducts(data));
+    }
+  }, [data, dispatch]);
+
+  const handleLoadMore = () => {
+    dispatch(setPage());
+  };
 
   let content;
 
-  if (isLoading) {
-    content = <p>Loading...</p>;
-  } else if (isSuccess) {
-    content = data.products.map((product) => (
-      <Grid key={product.id} item xs={3}>
-        <ProductCard product={product} />
-      </Grid>
-    ));
+  if (isLoading || isSuccess) {
+    content = (isLoading ? Array.from(new Array(limit)) : products).map(
+      (product, i) => (
+        <Grid key={isLoading ? i : product.id} item xs={3}>
+          <ProductCard isLoading={isLoading} product={product} />
+        </Grid>
+      )
+    );
   } else if (isError) {
-    content = <div>{error.toString()}</div>;
+    content = <div>{}</div>;
   }
 
   return (
@@ -46,7 +62,7 @@ const BestSellers = () => {
           <Grid container spacing={3.2} columns={15}>
             {content}
           </Grid>
-          <AppButton variant="outlined" size="large">
+          <AppButton variant="outlined" size="large" onClick={handleLoadMore}>
             LOAD MORE PRODUCTS
           </AppButton>
         </Stack>

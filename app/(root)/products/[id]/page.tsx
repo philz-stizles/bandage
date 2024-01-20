@@ -1,14 +1,14 @@
 'use client';
 
 import { Fragment } from 'react';
-import BestSellers from './components/best-sellers';
-import ProductDetails from './components/product-details';
+import { ProductDetails, BestSellers, Brands } from './components';
 
 const Product = () => {
   return (
     <Fragment>
       <ProductDetails />
       <BestSellers />
+      <Brands />
     </Fragment>
   );
 };

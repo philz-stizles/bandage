@@ -1,39 +1,39 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { Middleware, configureStore } from '@reduxjs/toolkit';
 import { productApi } from './services/product-service';
-import cartReducer, {
-  loadCartFromStore,
-  saveCartToStore,
-} from './features/cart-slice';
+import productReducer from '@/lib/redux/slices/product-slice';
+import cartReducer, { saveCartToStore } from '@/lib/redux/slices/cart-slice';
 import wishListReducer, {
-  loadWishListFromStore,
   saveWishListToStore,
-} from './features/wish-list-slice';
+} from '@/lib/redux/slices/wish-list-slice';
 
-const localStorageMiddleware = (store: any) => (next: any) => (action: any) => {
+const saveToLocalStorage: Middleware = (store) => (next) => (action: any) => {
   const result = next(action);
-  saveCartToStore(store.getState().cart);
-  saveWishListToStore(store.getState().wishList);
+
+  // Save  cart state to localStorage.
+  if (action.type.startsWith('cart/')) {
+    saveCartToStore(store.getState().cart);
+  }
+
+  // Save wish list state to localStorage.
+  if (action.type.startsWith('wishList/')) {
+    saveWishListToStore(store.getState().wishList);
+  }
+
   return result;
 };
-
-// const preloadedState = {
-//   cart: loadCartFromStore(),
-//   wishList: loadWishListFromStore(),
-// };
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       [productApi.reducerPath]: productApi.reducer,
+      products: productReducer,
       cart: cartReducer,
       wishList: wishListReducer,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(
-        localStorageMiddleware,
-        productApi.middleware
-      ),
-    // preloadedState
+      getDefaultMiddleware({
+        serializableCheck: false,
+      }).concat(saveToLocalStorage, productApi.middleware),
   });
 };
 

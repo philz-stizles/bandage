@@ -24,18 +24,23 @@ const Testimonials = () => {
               direction="column"
               justifyContent="center"
               alignItems="center"
-              py={3.2}
+              py={2.8}
             >
-              <Typography variant="h5" fontWeight="bold" mb={6.4}>
+              <Typography variant="h4" fontWeight="bold" mb={7.2}>
                 What they say about us
               </Typography>
               <Avatar
                 alt="Regina Miles"
-                src="/images/#user.1.jpg"
-                sx={{ width: 56, height: 56, mb: 2 }}
+                src="/images/avatar.jpg"
+                sx={{ width: 80, height: 80, mb: 2 }}
               />
               <Rating name="read-only" value={4} readOnly sx={{ mb: 2.4 }} />
-              <Typography variant="body1" textAlign="center" mb={3.2} maxWidth="80%">
+              <Typography
+                variant="body1"
+                textAlign="center"
+                mb={3.2}
+                maxWidth="80%"
+              >
                 Slate helps you see how many more days you need to work to reach
                 your financial goal.
               </Typography>

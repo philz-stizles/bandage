@@ -16,8 +16,8 @@ import { deepOrange, deepPurple } from '@mui/material/colors';
 import { Product } from '@/models/product';
 import { AppButton } from '@/components/ui';
 import { useAppDispatch } from '@/lib/redux/hooks';
-import { addToCart } from '@/lib/redux/features/cart-slice';
-import { addToWishList } from '@/lib/redux/features/wish-list-slice';
+import { addToCart } from '@/lib/redux/slices/cart-slice';
+import { addToWishList } from '@/lib/redux/slices/wish-list-slice';
 
 type Props = {
   product: Product;
@@ -36,22 +36,27 @@ const ProductPreview = ({ product }: Props) => {
       <Container maxWidth="lg">
         <Grid container spacing={7.2}>
           <Grid item sm={6}>
-            <Stack direction="column">
-              <Box
-                sx={{
-                  position: 'relative',
-                  aspectRatio: 5 / 4,
-                }}
-              >
-                <Image
-                  fill
-                  objectFit="cover"
-                  alt={product.title}
-                  src={product.thumbnail}
-                />
-              </Box>
-              <Stack direction="row" alignItems="center">
-                {product.images.map((image) => null)}
+            <Stack direction="column" spacing={2.8}>
+              <Image
+                width={506}
+                height={450}
+                style={{ objectFit: 'cover' }}
+                alt={product.title}
+                src={product.thumbnail}
+                loading="lazy"
+              />
+
+              <Stack direction="row" spacing={2.8}>
+                {product.images.map((image, i) => (
+                  <Image
+                    key={i}
+                    width={100}
+                    height={75}
+                    src={image}
+                    alt="thumbnail"
+                    loading="lazy"
+                  />
+                ))}
               </Stack>
             </Stack>
           </Grid>

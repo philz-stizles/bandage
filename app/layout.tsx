@@ -22,10 +22,12 @@ export default function RootLayout({
   return (
     <Providers>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={inter.className} suppressHydrationWarning={true}>
           <AppRouterCacheProvider>
             <Header />
-            <Stack component="main" flex={1}>{children}</Stack>
+            <Stack component="main" flex={1}>
+              {children}
+            </Stack>
             <Footer />
           </AppRouterCacheProvider>
         </body>

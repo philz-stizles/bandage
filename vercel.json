@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/products/(.*)",
+      "destination": "https://dummyjson.com/:1"
+    }
+  ]
+}

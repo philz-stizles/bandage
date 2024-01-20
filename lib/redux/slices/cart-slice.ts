@@ -1,6 +1,7 @@
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+
 import { Cart } from '@/models/cart';
 import { Product } from '@/models/product';
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 const CART_STORE = 'cart-store';
 
@@ -10,13 +11,9 @@ export const saveCartToStore = (cart: Cart) => {
   }
 };
 
-export const loadCartFromStore = () => {
-  if (typeof localStorage !== 'undefined') {
-    const cartStore = localStorage.getItem(CART_STORE);
-    return !!cartStore ? (JSON.parse(cartStore) as Cart) : initialState;
-  } else {
-    return initialState;
-  }
+ const loadCartFromStore = () => {
+  const cartStore = localStorage.getItem(CART_STORE);
+  return !!cartStore ? (JSON.parse(cartStore) as Cart) : initialState;
 };
 
 const initialState: Cart = {
@@ -27,8 +24,9 @@ const initialState: Cart = {
 
 const cartSlice = createSlice({
   name: 'cart',
-  initialState: loadCartFromStore,
+  initialState,
   reducers: {
+    initializeCart: loadCartFromStore,
     addToCart: (state, action: PayloadAction<Product>) => {
       const newItem = action.payload;
       const existingItem = state.items.find(
@@ -61,7 +59,7 @@ const cartSlice = createSlice({
         }
       }
     },
-    clearCart: (state, _) => {
+    clearCart: (state, _: PayloadAction<void>) => {
       state.items.length = 0;
       state.totalQuantity = 0;
       state.totalPrice = 0;
@@ -69,6 +67,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const { initializeCart, addToCart, removeFromCart, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
