@@ -11,7 +11,7 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import { AppButton, ProductCard, SectionHeader } from '@/components/ui';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
-import { setPage, setProducts } from '@/lib/redux/slices/product-slice';
+import { loadNextPage, setProducts } from '@/lib/redux/slices/product-slice';
 
 const BestSellers = () => {
   const dispatch = useAppDispatch();
@@ -28,7 +28,7 @@ const BestSellers = () => {
   }, [data, dispatch]);
 
   const handleLoadMore = () => {
-    dispatch(setPage());
+    dispatch(loadNextPage());
   };
 
   let content;
@@ -58,8 +58,8 @@ const BestSellers = () => {
           subTitle="Featured Products"
           description="Problems trying to resolve the conflict between"
         />
-        <Stack direction="column" alignItems="center" spacing={8} py={4}>
-          <Grid container spacing={3.2} columns={15}>
+        <Stack direction="column" alignItems="center" spacing={8} py={2}>
+          <Grid container spacing={4} columns={15}>
             {content}
           </Grid>
           <AppButton variant="outlined" size="large" onClick={handleLoadMore}>

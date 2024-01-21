@@ -25,11 +25,11 @@ const FeaturedPosts = ({ posts }: Props) => {
           justifyContent="center"
           alignItems="center"
         >
-          <Typography variant="subtitle2" fontWeight={600}>
+          <Typography variant="subtitle1" fontWeight={600}>
             Practice Advice
           </Typography>
 
-          <Typography variant="h4" fontWeight={700} marginTop={1}>
+          <Typography variant="h3" fontWeight={600} marginTop={1}>
             Featured Posts
           </Typography>
         </Stack>

@@ -20,12 +20,12 @@ const productSlice = createSlice({
     setProducts: (state, action: PayloadAction<PagedProducts>) => {
       state.products = [...state.products, ...action.payload.products];
     },
-    setPage: (state, _: PayloadAction<void>) => {
+    loadNextPage: (state, _: PayloadAction<void>) => {
       state.page = state.page + 1;
     },
   },
 });
 
-export const { setProducts, setPage } = productSlice.actions;
+export const { setProducts, loadNextPage } = productSlice.actions;
 
 export default productSlice.reducer;

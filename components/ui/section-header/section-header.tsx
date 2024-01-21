@@ -9,13 +9,13 @@ type Props = {
 
 const SectionHeader = ({ title, subTitle, description }: Props) => {
   return (
-    <Stack py={4} direction="column" justifyContent="center" alignItems="center">
+    <Stack py={2} direction="column" justifyContent="center" alignItems="center">
       <Typography variant="h6" fontWeight={500}>
         {subTitle}
       </Typography>
 
       <Typography
-        variant="h6"
+        variant="h5"
         fontWeight={700}
         textTransform="uppercase"
         marginTop={1}
@@ -23,7 +23,7 @@ const SectionHeader = ({ title, subTitle, description }: Props) => {
         {title}
       </Typography>
       {description && (
-        <Typography variant="body1" marginTop={1}>
+        <Typography variant="inherit" marginTop={1}>
           {description}
         </Typography>
       )}

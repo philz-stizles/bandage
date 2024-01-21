@@ -2,27 +2,25 @@
 
 import ShoppingCartOutlined from '@mui/icons-material/ShoppingCartOutlined';
 import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
+import IconButton from '@mui/material/IconButton';
 import { useCart } from '@/hooks/use-cart';
 import { useAppSelector } from '@/lib/redux/hooks';
 
+
 const CartButton = () => {
   const { onOpen } = useCart();
-
   const cart = useAppSelector((state) => state.cart);
 
   return (
-    <Stack
-      component="button"
-      direction="row"
-      spacing={0.4}
+    <IconButton
+      color="primary"
       onClick={() => {
         onOpen();
       }}
     >
-      <ShoppingCartOutlined />
-      <Typography>{cart.totalQuantity}</Typography>
-    </Stack>
+      <ShoppingCartOutlined fontSize="medium" />
+      <Typography ml={0.2}>{cart.totalQuantity}</Typography>
+    </IconButton>
   );
 };
 

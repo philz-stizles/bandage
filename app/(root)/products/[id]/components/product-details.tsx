@@ -1,10 +1,7 @@
 'use client';
 
-import {
-  useGetProductByIdQuery,
-  useGetProductsQuery,
-} from '@/lib/redux/services/product-service';
 import { useParams } from 'next/navigation';
+import { useGetProductsQuery } from '@/lib/redux/services/product-service';
 import ProductPreview from './product-preview';
 import ProductInfo from './product-info';
 

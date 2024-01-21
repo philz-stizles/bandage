@@ -11,9 +11,9 @@ export const saveCartToStore = (cart: Cart) => {
   }
 };
 
- const loadCartFromStore = () => {
-  const cartStore = localStorage.getItem(CART_STORE);
-  return !!cartStore ? (JSON.parse(cartStore) as Cart) : initialState;
+const loadCartFromStore = () => {
+  const store = localStorage.getItem(CART_STORE);
+  return !!store ? (JSON.parse(store) as Cart) : initialState;
 };
 
 const initialState: Cart = {
@@ -57,6 +57,8 @@ const cartSlice = createSlice({
           existingItem.quantity--;
           existingItem.totalPrice -= existingItem.product.price;
         }
+
+         state.totalPrice -= existingItem.product.price;
       }
     },
     clearCart: (state, _: PayloadAction<void>) => {
@@ -67,6 +69,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const { initializeCart, addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const { initializeCart, addToCart, removeFromCart, clearCart } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

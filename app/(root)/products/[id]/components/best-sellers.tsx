@@ -15,8 +15,6 @@ const BestSellers = () => {
     skip: 0,
   });
 
-  console.log(data);
-
   let content;
 
   if (isLoading) {
