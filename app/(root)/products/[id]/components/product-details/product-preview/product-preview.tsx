@@ -45,35 +45,45 @@ const ProductPreview = ({ product }: Props) => {
           sx={{
             gridTemplateColumns: {
               md: 'repeat(2, minmax(0, 1fr))',
-              sm: 'repeat(1, minmax(0, 1fr))',
               xs: 'repeat(1, minmax(0, 1fr))',
             },
           }}
         >
           <ProductGallery product={product} />
 
-          <Stack direction="column" justifyContent="space-between">
+          <Stack direction="column" pt={2}>
             <Box>
-              <Typography variant="h6" fontWeight={300} mb={1}>
+              <Typography variant="h5" fontWeight={300} mb={1.6}>
                 {product.title}
               </Typography>
-              <Stack direction="row" spacing={0.8} mb={1.6}>
-                <Rating name="read-only" value={product.rating} readOnly />
+              <Stack direction="row" spacing={0.8} mb={2.8}>
+                <Rating
+                  size="large"
+                  name="read-only"
+                  value={product.rating}
+                  readOnly
+                />
                 <Typography variant="body2" fontWeight={600}>
                   10 Reviews
                 </Typography>
               </Stack>
-              <Typography variant="h6" fontWeight={700}>
+              <Typography variant="h5" fontWeight={700}>
                 ${product.price}
               </Typography>
-              <Stack direction="row" alignItems="center" spacing={0.4}>
-                <Typography>Availability :</Typography>
-                <Typography>
+              <Stack direction="row" alignItems="center" spacing={1}>
+                <Typography variant="inherit" fontWeight={600} color="#737373">
+                  Availability :
+                </Typography>
+                <Typography
+                  variant="inherit"
+                  fontWeight={600}
+                  color={theme.palette.primary.main}
+                >
                   {product.stock > 0 ? 'In Stock' : 'Out of Stock'}
                 </Typography>
               </Stack>
             </Box>
-            <Box>
+            <Box mt={14}>
               <Divider />
               <Stack direction="row" spacing={1.4} mt={3.2}>
                 <Box
