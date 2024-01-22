@@ -11,26 +11,36 @@ const Brands = () => {
     <Box
       bgcolor="#fafafa"
       sx={{
-        py: 10,
+        py: 8,
       }}
     >
       <Container maxWidth="lg">
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          // gap={2}
+        <Box
+          display="grid"
+          gap={6}
+          sx={{
+            gridTemplateColumns: {
+              md: 'repeat(6, minmax(0, 1fr))',
+              sm: 'repeat(3, minmax(0, 1fr))',
+              xs: 'repeat(1, minmax(0, 1fr))',
+            },
+          }}
         >
           {BRANDS.map((brand, i) => (
-            <Image
-              key={i}
-              width={180}
-              height={60}
-              style={{ objectFit: 'contain', maxHeight: '75px', minHeight: '34px' }}
-              src={brand}
-              alt="brand"
-            />
+            <Box key={i} width="100%" height={60} position="relative">
+              <Image
+                fill
+                style={{
+                  objectFit: 'contain',
+                  maxHeight: '75px',
+                  minHeight: '34px',
+                }}
+                src={brand}
+                alt="brand"
+              />
+            </Box>
           ))}
-        </Stack>
+        </Box>
       </Container>
     </Box>
   );

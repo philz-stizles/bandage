@@ -8,8 +8,9 @@ import Container from '@mui/material/Container';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
-import { Product } from '@/models/product';
 import Stack from '@mui/material/Stack';
+import { Product } from '@/models/product';
+
 
 interface StyledTabsProps {
   children?: React.ReactNode;
