@@ -32,10 +32,9 @@ const wishListSlice = createSlice({
     },
     removeFromWishList: (state, action: PayloadAction<number>) => {
       const id = action.payload;
-      const existingItem = state.find((item) => item.id === id);
-      if (!!existingItem) {
-        console.log(existingItem);
-        state = state.filter((item) => item.id !== id);
+      const existingIndex = state.findIndex((item) => item.id === id);
+      if (existingIndex !== -1) {
+        state.splice(existingIndex, 1);
       }
     },
     clearWishList: (state, _) => {
@@ -44,7 +43,11 @@ const wishListSlice = createSlice({
   },
 });
 
-export const { initializeWishlist, addToWishList, removeFromWishList, clearWishList } =
-  wishListSlice.actions;
+export const {
+  initializeWishlist,
+  addToWishList,
+  removeFromWishList,
+  clearWishList,
+} = wishListSlice.actions;
 
 export default wishListSlice.reducer;

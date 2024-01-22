@@ -1,10 +1,14 @@
+'use client';
+
 import Link from 'next/link';
+import Typography from '@mui/material/Typography';
+
 
 const Logo = () => {
   return (
-    <h2>
-      <Link href="/">Bandage</Link>
-    </h2>
+    <Typography variant="h4" fontWeight={600} component={Link} href="/">
+      Bandage
+    </Typography>
   );
 };
 

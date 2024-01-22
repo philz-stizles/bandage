@@ -1,15 +1,19 @@
 'use client';
 
-import { AppButton } from '@/components/ui';
-import { Stack, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { AppButton } from '@/components/ui';
 
 const Cta = () => {
+  const theme = useTheme();
+
   return (
     <Box
       sx={{
-        py: 12,
+        py: 16,
         backgroundImage: 'url(/images/background.png)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
@@ -24,26 +28,38 @@ const Cta = () => {
             alignItems="center"
             textAlign="center"
             spacing={4}
-            maxWidth="54%"
+            sx={{
+              maxWidth: {
+                md: '54%',
+                sm: '72%',
+                xs: '100%',
+              },
+            }}
           >
             <Typography
-              variant="subtitle1"
-              fontWeight={500}
-              color="rgb(35, 166, 240)"
+              variant="inherit"
+              fontWeight={600}
+              color={theme.palette.primary.main}
             >
               Designing Better Experience
             </Typography>
-            <Typography variant="h3" fontWeight={600}>
+            <Typography variant="h3" fontWeight={600} color="#252B42">
               Problems trying to resolve the conflict between
             </Typography>
-            <Typography variant="body1">
+            <Typography variant="inherit" fontWeight={400} color="#737373">
               Problems trying to resolve the conflict between the two major
               realms of Classical physics
             </Typography>
-            <Typography variant="h6" fontWeight={600} color="rgb(36, 133, 109)">
+            <Typography
+              variant="h5"
+              fontWeight={800}
+              color={theme.palette.secondary.main}
+            >
               $16.48
             </Typography>
-            <AppButton variant="contained">ADD YOUR CALL TO ACTION</AppButton>
+            <AppButton size="large" variant="contained">
+              ADD YOUR CALL TO ACTION
+            </AppButton>
           </Stack>
         </Stack>
       </Container>

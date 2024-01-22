@@ -1,14 +1,16 @@
+'use client';
+
+import { useTheme } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 import TimerOutlined from '@mui/icons-material/TimerOutlined';
+import LegendToggleOutlined from '@mui/icons-material/LegendToggleOutlined';
+import ChevronRightOutlined from '@mui/icons-material/ChevronRightOutlined';
 import { Post } from '@/models/post';
-import { ChevronRightOutlined } from '@mui/icons-material';
-import { Box } from '@mui/material';
 import { AppButton } from '..';
 
 type Props = {
@@ -16,6 +18,8 @@ type Props = {
 };
 
 const PostCard = ({ post }: Props) => {
+  const theme = useTheme();
+
   return (
     <Card>
       <Box position="relative">
@@ -29,10 +33,10 @@ const PostCard = ({ post }: Props) => {
           textTransform="uppercase"
           fontWeight={600}
           position="absolute"
-          bgcolor=" #E74040"
+          bgcolor={theme.palette.error.main}
           borderRadius={1}
           color="#fff"
-          py={0.4}
+          py={0.2}
           px={1.6}
           sx={{
             left: '20px',
@@ -49,21 +53,28 @@ const PostCard = ({ post }: Props) => {
         }}
       >
         <Stack direction="row" alignItems="center" spacing={1.4} mb={1}>
-          {post.tags.map((tag) => (
-            <Typography key={tag} variant="body1" fontWeight={300} component="small">
+          {post.tags.map((tag, i) => (
+            <Typography
+              key={tag}
+              color={i === 0 ? theme.palette.primary.light : ''}
+              variant="body1"
+              fontWeight={300}
+              component="small"
+            >
               {tag}
             </Typography>
           ))}
         </Stack>
-        <Typography gutterBottom variant="h6" fontWeight={300} component="div">
+        <Typography
+          gutterBottom
+          variant="h5"
+          color="#252B42"
+          fontWeight={300}
+          component="div"
+        >
           {post.title}
         </Typography>
-        <Typography
-          variant="body1"
-          fontWeight={300}
-          color="text.secondary"
-          mb={2}
-        >
+        <Typography variant="inherit" fontWeight={300} color="#737373" mb={3.2}>
           {post.content}
         </Typography>
         <Stack
@@ -74,25 +85,29 @@ const PostCard = ({ post }: Props) => {
         >
           <Typography
             variant="body2"
-            color="text.secondary"
+            fontWeight={300}
+            color="#737373"
             display="flex"
             alignItems="center"
             gap={0.8}
           >
-            <TimerOutlined />
+            <TimerOutlined color="primary" fontSize="small" />
             {post.createdAt}
           </Typography>
           <Typography
             variant="body2"
-            color="text.secondary"
+            fontWeight={300}
+            color="#737373"
             display="flex"
             alignItems="center"
+            gap={0.8}
           >
+            <LegendToggleOutlined color="secondary" fontSize="small" />
             {post.comments.length} comments
           </Typography>
         </Stack>
-        <AppButton size="small" color="primary">
-          Learn More <ChevronRightOutlined />
+        <AppButton size="small" color="inherit">
+          Learn More <ChevronRightOutlined color="primary" />
         </AppButton>
       </CardContent>
     </Card>

@@ -1,19 +1,18 @@
 'use client';
 
-import { ThemeProvider } from '@mui/material/styles';
-import ReduxProvider from '@/lib/redux/store-provider';
-import theme from '@/lib/mui/theme';
+import ReduxProvider from '@/lib/redux/redux-provider';
 import { ModalProvider } from '@/components/providers/modal-provider';
 import { StorageProvider } from '@/lib/redux/storage-provider';
+import { MaterialProvider } from '@/lib/mui/material-provider';
 
 export const Providers = (props: React.PropsWithChildren) => {
   return (
     <ReduxProvider>
       <StorageProvider>
-        <ThemeProvider theme={theme}>
+        <MaterialProvider>
           <ModalProvider />
           {props.children}
-        </ThemeProvider>
+        </MaterialProvider>
       </StorageProvider>
     </ReduxProvider>
   );

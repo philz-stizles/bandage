@@ -3,14 +3,13 @@
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
-  --primary-color:  rgb(35, 166, 240) 
-  /* #23A6F0; */
-
-  --secondary-color:  rgb(36, 133, 109);
+  /* 
+  --color: #252B42;
   --secondary-text: #737373;
-  /* background: #FAFAFA; */
-   /* background: #E6E6E6; */
-
+  background: #FAFAFA; */
+  /* background: #E6E6E6; */
+  /* background: #23856D; */
+  /* #BDBDBD */
 
 }
 
@@ -33,7 +32,6 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
 
 a {
   color: inherit;

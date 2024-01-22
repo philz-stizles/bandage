@@ -5,12 +5,17 @@ const theme = createTheme({
     primary: {
       main: '#23A6F0',
 
-      contrastText: '#FFFFFF'
+      contrastText: '#FFFFFF',
     },
     secondary: {
       main: '#23856D',
     },
-    // Add more customizations as needed
+    success: {
+      main: '#2DC071',
+    },
+    error: {
+      main: '#E74040',
+    },
   },
 });
 

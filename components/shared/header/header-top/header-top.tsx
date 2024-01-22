@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
@@ -13,10 +14,12 @@ import Twitter from '@mui/icons-material/Twitter';
 import EmailOutlined from '@mui/icons-material/EmailOutlined';
 
 const HeaderTop = () => {
+  const theme = useTheme();
+
   return (
     <Box
       component="section"
-      bgcolor="rgb(36, 133, 109)"
+      bgcolor={theme.palette.secondary.main}
       color="#fff"
       py={1.6}
       sx={{ display: { xs: 'none', md: 'block' } }}
@@ -26,7 +29,6 @@ const HeaderTop = () => {
           direction="row"
           justifyContent="space-between"
           alignItems="center"
-          paddingX={2.4}
         >
           <Stack direction="row" alignItems="center" spacing={3.2}>
             <Stack

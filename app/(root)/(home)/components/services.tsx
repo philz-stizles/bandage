@@ -23,13 +23,23 @@ const Services = ({ services }: Props) => {
           subTitle="Featured Products"
           description="Problems trying to resolve the conflict between"
         />
-        <Grid container spacing={2} py={6}>
+        <Box
+          display="grid"
+          alignItems="flex-start"
+          gap={8}
+          pt={12}
+          sx={{
+            gridTemplateColumns: {
+              md: 'repeat(3, minmax(0, 1fr))',
+              sm: 'repeat(2, minmax(0, 1fr))',
+              xs: 'repeat(1, minmax(0, 1fr))',
+            },
+          }}
+        >
           {services.map((service) => (
-            <Grid key={service.id} item xs={4}>
-              <ServiceCard service={service} />
-            </Grid>
+            <ServiceCard key={service.id} service={service} />
           ))}
-        </Grid>
+        </Box>
       </Container>
     </Box>
   );
