@@ -9,11 +9,11 @@ export const productApi = createApi({
     getProducts: builder.query<PagedProducts, { limit: number; skip: number }>({
       query: (options) => {
         const { limit, skip } = options;
-        return `/products?limit=${limit}&skip=${skip}`;
+        return `products?limit=${limit}&skip=${skip}`;
       },
     }),
     getProductById: builder.query<Product, number>({
-      query: (id) => `/products/${id}`,
+      query: (id) => `products/${id}`,
     }),
   }),
 });

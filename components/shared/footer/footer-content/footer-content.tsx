@@ -8,9 +8,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import MaterialLink from '@mui/material/Link';
-import TextField from '@mui/material/TextField' ;
+import TextField from '@mui/material/TextField';
 import { AppButton } from '@/components/ui';
- 
 
 const FooterContent = () => {
   return (
@@ -103,7 +102,7 @@ const Subscribe = () => {
         <TextField
           id="email"
           placeholder="Your Email"
-          label="Outlined"
+          label="Your Email"
           variant="outlined"
         />
         <AppButton
