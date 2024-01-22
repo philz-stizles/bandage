@@ -1,9 +1,8 @@
 'use client';
 
-import Image from 'next/image';
+import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
@@ -14,10 +13,11 @@ import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import { deepOrange, deepPurple } from '@mui/material/colors';
 import { Product } from '@/models/product';
-import { AppButton } from '@/components/ui';
+import { AppBreadCrumbs, AppButton } from '@/components/ui';
 import { useAppDispatch } from '@/lib/redux/hooks';
 import { addToCart } from '@/lib/redux/slices/cart-slice';
 import { addToWishList } from '@/lib/redux/slices/wish-list-slice';
+import ProductGallery from './product-gallery/product-gallery';
 
 type Props = {
   product: Product;
@@ -25,48 +25,34 @@ type Props = {
 
 const ProductPreview = ({ product }: Props) => {
   const dispatch = useAppDispatch();
+  const theme = useTheme();
 
   return (
     <Box
       component="section"
+      bgcolor="#FAFAFA"
       sx={{
-        py: 10,
+        pt: 6,
+        pb: 8,
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={7.2}>
-          <Grid item sm={6}>
-            <Stack direction="column" spacing={2.8}>
-              <Image
-                width={506}
-                height={450}
-                style={{ objectFit: 'cover' }}
-                alt={product.title}
-                src={product.thumbnail}
-                loading="lazy"
-              />
+        <AppBreadCrumbs links={['Home', 'Shop']} />
+        <Box
+          display="grid"
+          gap={8}
+          pt={5}
+          sx={{
+            gridTemplateColumns: {
+              md: 'repeat(2, minmax(0, 1fr))',
+              sm: 'repeat(1, minmax(0, 1fr))',
+              xs: 'repeat(1, minmax(0, 1fr))',
+            },
+          }}
+        >
+          <ProductGallery product={product} />
 
-              <Stack direction="row" spacing={2.8}>
-                {product.images.map((image, i) => (
-                  <Image
-                    key={i}
-                    width={100}
-                    height={75}
-                    src={image}
-                    alt="thumbnail"
-                    loading="lazy"
-                  />
-                ))}
-              </Stack>
-            </Stack>
-          </Grid>
-          <Grid
-            item
-            sm={6}
-            display="flex"
-            direction="column"
-            justifyContent="space-between"
-          >
+          <Stack direction="column" justifyContent="space-between">
             <Box>
               <Typography variant="h6" fontWeight={300} mb={1}>
                 {product.title}
@@ -93,38 +79,38 @@ const ProductPreview = ({ product }: Props) => {
                 <Box
                   sx={{
                     borderRadius: '50%',
-                    bgcolor: deepOrange[500],
-                    width: 24,
-                    height: 24,
+                    bgcolor: theme.palette.primary.main,
+                    width: 32,
+                    height: 32,
                   }}
                 ></Box>
                 <Box
                   sx={{
                     borderRadius: '50%',
-                    bgcolor: deepOrange[500],
-                    width: 24,
-                    height: 24,
+                    bgcolor: theme.palette.success.main,
+                    width: 32,
+                    height: 32,
                   }}
                 ></Box>
                 <Box
                   sx={{
                     borderRadius: '50%',
-                    bgcolor: deepPurple[500],
-                    width: 24,
-                    height: 24,
+                    bgcolor: '#E77C40',
+                    width: 32,
+                    height: 32,
                   }}
                 ></Box>
                 <Box
                   sx={{
                     borderRadius: '50%',
-                    bgcolor: deepPurple[500],
-                    width: 24,
-                    height: 24,
+                    bgcolor: '#252B42',
+                    width: 32,
+                    height: 32,
                   }}
                 ></Box>
               </Stack>
-              <Stack direction="row" alignItems="center" spacing={2} mt={7.2}>
-                <AppButton variant="contained" size="medium">
+              <Stack direction="row" alignItems="center" spacing={2} mt={8}>
+                <AppButton variant="contained" size="large">
                   Select Options
                 </AppButton>
                 <Stack direction="row" alignItems="center">
@@ -140,8 +126,8 @@ const ProductPreview = ({ product }: Props) => {
                 </Stack>
               </Stack>
             </Box>
-          </Grid>
-        </Grid>
+          </Stack>
+        </Box>
       </Container>
     </Box>
   );

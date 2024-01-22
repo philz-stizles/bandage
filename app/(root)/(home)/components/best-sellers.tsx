@@ -13,7 +13,7 @@ import { loadNextPage, setProducts } from '@/lib/redux/slices/product-slice';
 const BestSellers = () => {
   const dispatch = useAppDispatch();
   const { products, page, limit } = useAppSelector((state) => state.products);
-  const { data, isLoading, isSuccess, isError } = useGetProductsQuery({
+  const { data, isLoading, isSuccess, isError, error } = useGetProductsQuery({
     limit,
     skip: (page - 1) * limit,
   });
@@ -33,12 +33,20 @@ const BestSellers = () => {
   if (isLoading || isSuccess) {
     content = (isLoading ? Array.from(new Array(limit)) : products).map(
       (product, i) => (
-        <Grid key={isLoading ? i : product.id} item xs={12} sm={4} md={3} lg={3}>
+        <Grid
+          key={isLoading ? i : product.id}
+          item
+          xs={12}
+          sm={4}
+          md={3}
+          lg={3}
+        >
           <ProductCard isLoading={isLoading} product={product} />
         </Grid>
       )
     );
   } else if (isError) {
+    console.log(error.toString());
     content = <div>{}</div>;
   }
 
@@ -62,7 +70,7 @@ const BestSellers = () => {
             columns={{
               lg: 15,
               md: 12,
-              sm:12,
+              sm: 12,
               xs: 12,
             }}
           >

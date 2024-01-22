@@ -1,4 +1,8 @@
+'use client';
+
 import { Fragment } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useTheme } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -8,8 +12,6 @@ import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
 import { Product } from '@/models/product';
 
-import Link from 'next/link';
-
 type Props = {
   isLoading?: boolean;
   product: Product;
@@ -17,6 +19,8 @@ type Props = {
 
 const ProductCard = ({ isLoading = false, product }: Props) => {
   const theme = useTheme();
+  const pathname = usePathname();
+  const isProductDetails = pathname.match(/^\/products\/\d+$/);
 
   return (
     <Card
@@ -33,16 +37,20 @@ const ProductCard = ({ isLoading = false, product }: Props) => {
       ) : (
         <CardMedia
           component="img"
-          height="240"
           image={product.thumbnail}
           alt={product.title}
+          sx={{
+            aspectRatio: '17/20',
+          }}
         />
       )}
       <CardContent
         sx={{
+          p: 3.2,
+          backgroundColor: isProductDetails ? '#FFFFFF' : 'inherit',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
+          alignItems: isProductDetails ? 'flex-start' : 'center',
         }}
       >
         {isLoading ? (

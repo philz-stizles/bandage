@@ -33,7 +33,12 @@ const HeaderActions = ({
         <Typography fontWeight={600}>Login / Register</Typography>
       </Stack>
       <Stack direction="row" alignItems="center" spacing={1}>
-        <IconButton color="primary">
+        <IconButton
+          color="primary"
+          sx={{
+            display: { xs: 'none', lg: 'inline-flex' },
+          }}
+        >
           <SearchOutlined fontSize="medium" />
         </IconButton>
         <CartButton />

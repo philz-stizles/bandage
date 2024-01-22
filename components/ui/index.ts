@@ -11,3 +11,4 @@ export { default as PostCard } from './post-card/post-card';
 export { default as ServiceCard } from './service-card/service-card';
 export { default as CategoryCard } from './category-card/category-card';
 export { default as SectionHeader } from './section-header/section-header';
+export { default as AppBreadCrumbs } from './breadcrumbs/breadcrumbs';
