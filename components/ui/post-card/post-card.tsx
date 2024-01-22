@@ -74,7 +74,7 @@ const PostCard = ({ post }: Props) => {
         >
           {post.title}
         </Typography>
-        <Typography variant="inherit" fontWeight={300} color="#737373" mb={3.2}>
+        <Typography variant="body1" fontWeight={400} color="#737373" mb={3.2}>
           {post.content}
         </Typography>
         <Stack

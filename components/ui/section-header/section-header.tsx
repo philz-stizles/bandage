@@ -18,7 +18,7 @@ const SectionHeader = ({ title, subTitle, description }: Props) => {
     >
       <Typography
         variant="h6"
-        fontWeight={500}
+        fontWeight={600}
         color="#737373"
         textAlign="center"
       >
@@ -37,7 +37,7 @@ const SectionHeader = ({ title, subTitle, description }: Props) => {
       </Typography>
       {description && (
         <Typography
-          variant="inherit"
+          variant="body1"
           fontWeight={500}
           color="#737373"
           marginTop={1}

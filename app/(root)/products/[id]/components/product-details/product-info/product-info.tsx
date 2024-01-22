@@ -131,20 +131,20 @@ const ProductInfo = ({ product }: Props) => {
             <Box maxWidth="98%">
               <Typography
                 variant="h5"
-                fontWeight={600}
+                fontWeight={700}
                 mb={4.8}
                 color="#252B42"
               >
                 the quick fox jumps over
               </Typography>
-              <Typography variant="inherit" mb={4} color="#737373">
+              <Typography variant="body1" mb={4} color="#737373">
                 Met minim Mollie non desert Alamo est sit cliquey dolor do met
                 sent. RELIT official consequent door ENIM RELIT Mollie.
                 Excitation venial consequent sent nostrum met.
               </Typography>
 
               <Typography
-                variant="inherit"
+                variant="body1"
                 mb={4}
                 borderLeft="4px solid green"
                 pl={4}
@@ -155,7 +155,7 @@ const ProductInfo = ({ product }: Props) => {
                 Excitation venial consequent sent nostrum met.
               </Typography>
 
-              <Typography variant="inherit" color="#737373">
+              <Typography variant="body1" color="#737373">
                 Met minim Mollie non desert Alamo est sit cliquey dolor do met
                 sent. RELIT official consequent door ENIM RELIT Mollie.
                 Excitation venial consequent sent nostrum met.

@@ -15,7 +15,7 @@ const FooterBottom = () => {
       <Container maxWidth="lg">
         <Typography
           component="p"
-          variant="body1"
+          variant="body2"
           color="#737373"
           fontWeight={600}
           sx={{

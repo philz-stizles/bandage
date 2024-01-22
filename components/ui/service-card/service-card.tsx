@@ -22,7 +22,7 @@ const ServiceCard = ({ service }: Props) => {
         {service.title}
       </Typography>
       <Typography
-        variant="inherit"
+        variant="body1"
         color="#737373"
         fontWeight={500}
         textAlign="center"

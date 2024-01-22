@@ -28,25 +28,42 @@ const Cta = () => {
             alignItems="center"
             textAlign="center"
             spacing={4}
-            sx={{
-              maxWidth: {
-                md: '54%',
-                sm: '72%',
-                xs: '100%',
-              },
-            }}
           >
             <Typography
-              variant="inherit"
-              fontWeight={600}
+              variant="subtitle1"
+              fontWeight={700}
               color={theme.palette.primary.main}
             >
               Designing Better Experience
             </Typography>
-            <Typography variant="h3" fontWeight={600} color="#252B42">
+            <Typography
+              variant="h3"
+              fontWeight={700}
+              color="#252B42"
+              sx={{
+                maxWidth: {
+                  lg: '64%',
+                  md: '72%',
+                  sm: '80%',
+                  xs: '100%',
+                },
+              }}
+            >
               Problems trying to resolve the conflict between
             </Typography>
-            <Typography variant="inherit" fontWeight={400} color="#737373">
+            <Typography
+              variant="body1"
+              fontWeight={400}
+              color="#737373"
+              sx={{
+                maxWidth: {
+                  lg: '68%',
+                  md: '72%',
+                  sm: '80%',
+                  xs: '100%',
+                },
+              }}
+            >
               Problems trying to resolve the conflict between the two major
               realms of Classical physics
             </Typography>

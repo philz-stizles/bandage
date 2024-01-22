@@ -56,27 +56,27 @@ const ProductPreview = ({ product }: Props) => {
               <Typography variant="h5" fontWeight={300} mb={1.6}>
                 {product.title}
               </Typography>
-              <Stack direction="row" spacing={0.8} mb={2.8}>
+              <Stack direction="row" alignItems="center" spacing={0.8} mb={2.8}>
                 <Rating
                   size="large"
                   name="read-only"
                   value={product.rating}
                   readOnly
                 />
-                <Typography variant="body2" fontWeight={600}>
+                <Typography variant="body1" fontWeight={700} color="#737373">
                   10 Reviews
                 </Typography>
               </Stack>
-              <Typography variant="h5" fontWeight={700}>
+              <Typography variant="h5" fontWeight={700} gutterBottom>
                 ${product.price}
               </Typography>
               <Stack direction="row" alignItems="center" spacing={1}>
-                <Typography variant="inherit" fontWeight={600} color="#737373">
+                <Typography variant="body1" fontWeight={700} color="#737373">
                   Availability :
                 </Typography>
                 <Typography
-                  variant="inherit"
-                  fontWeight={600}
+                  variant="body1"
+                  fontWeight={700}
                   color={theme.palette.primary.main}
                 >
                   {product.stock > 0 ? 'In Stock' : 'Out of Stock'}

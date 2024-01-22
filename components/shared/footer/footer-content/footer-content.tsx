@@ -67,7 +67,7 @@ const Menu = ({
 }: PropsWithChildren<{ title: string; items?: string[] }>) => {
   return (
     <Stack direction="column">
-      <Typography variant="h6" fontWeight={600} color="#252B42" mb={2.8}>
+      <Typography variant="subtitle1" fontWeight={800} color="#252B42" mb={2.8}>
         {title}
       </Typography>
       {items && (
@@ -76,8 +76,8 @@ const Menu = ({
             <li key={item}>
               <MaterialLink
                 component={Link}
-                variant="body1"
-                fontWeight={600}
+                variant="subtitle2"
+                fontWeight={700}
                 color="#737373"
                 underline="none"
                 href="#"

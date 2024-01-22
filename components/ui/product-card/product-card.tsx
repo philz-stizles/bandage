@@ -51,6 +51,7 @@ const ProductCard = ({ isLoading = false, product }: Props) => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: isProductDetails ? 'flex-start' : 'center',
+          overflow: 'hidden',
         }}
       >
         {isLoading ? (
@@ -77,6 +78,11 @@ const ProductCard = ({ isLoading = false, product }: Props) => {
               marginBottom={0.6}
               color="#252B42"
               noWrap
+              sx={{
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}
             >
               {product.title}
             </Typography>
