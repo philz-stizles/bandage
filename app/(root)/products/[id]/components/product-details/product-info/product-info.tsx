@@ -5,13 +5,11 @@ import Image from 'next/image';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Stack from '@mui/material/Stack';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import { Product } from '@/models/product';
-
-
+import Stack from '@mui/material/Stack';
 
 interface StyledTabsProps {
   children?: React.ReactNode;
@@ -85,7 +83,6 @@ const ProductInfo = ({ product }: Props) => {
             value={value}
             onChange={handleChange}
             aria-label="product info tabs"
-            
           >
             <Tab
               sx={{
@@ -121,44 +118,60 @@ const ProductInfo = ({ product }: Props) => {
         </Box>
 
         <CustomTabPanel value={value} index={0}>
-          <Stack direction="row" justifyContent="space-between" spacing={4}>
-            <Box>
-              <Typography variant="h5" fontWeight={600} mb={4.8}>
+          <Box
+            display="grid"
+            gap={8}
+            sx={{
+              gridTemplateColumns: {
+                md: 'repeat(2, minmax(0, 1fr))',
+                xs: 'repeat(1, minmax(0, 1fr))',
+              },
+            }}
+          >
+            <Box maxWidth="98%">
+              <Typography
+                variant="h5"
+                fontWeight={600}
+                mb={4.8}
+                color="#252B42"
+              >
                 the quick fox jumps over
               </Typography>
-              <Typography variant="body1" mb={4} maxWidth="513px">
+              <Typography variant="inherit" mb={4} color="#737373">
                 Met minim Mollie non desert Alamo est sit cliquey dolor do met
                 sent. RELIT official consequent door ENIM RELIT Mollie.
                 Excitation venial consequent sent nostrum met.
               </Typography>
 
               <Typography
-                variant="body1"
+                variant="inherit"
                 mb={4}
-                maxWidth="513px"
                 borderLeft="4px solid green"
                 pl={4}
+                color="#737373"
               >
                 Met minim Mollie non desert Alamo est sit cliquey dolor do met
                 sent. RELIT official consequent door ENIM RELIT Mollie.
                 Excitation venial consequent sent nostrum met.
               </Typography>
 
-              <Typography variant="body1" maxWidth="513px">
+              <Typography variant="inherit" color="#737373">
                 Met minim Mollie non desert Alamo est sit cliquey dolor do met
                 sent. RELIT official consequent door ENIM RELIT Mollie.
                 Excitation venial consequent sent nostrum met.
               </Typography>
             </Box>
 
-            <Image
-              src={product.thumbnail}
-              alt=""
-              width={427}
-              height={392}
-              loading="lazy"
-            />
-          </Stack>
+            <Stack direction="row" justifyContent="flex-end">
+              <Image
+                src={product.thumbnail}
+                alt={product.title}
+                width={427}
+                height={392}
+                loading="lazy"
+              />
+            </Stack>
+          </Box>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
           Item Two
